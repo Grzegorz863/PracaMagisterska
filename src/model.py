@@ -1,11 +1,16 @@
+import os
 from keras import layers, optimizers
 from keras import models
 import matplotlib.pyplot as plt
 
-from image_processing import image_processing
+from src.image_processing import image_processing
 
 
-def fit_model(save_file_name):
+def fit_model(save_file_name, use_gpu):
+
+    if use_gpu:
+        os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
     train_img_gen, val_img_gen = image_processing()
 
     model = models.Sequential()

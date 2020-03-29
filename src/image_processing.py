@@ -1,7 +1,7 @@
 from keras.utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 
-from read_train_img import read_train_img
+from src.utils.read_train_img import read_train_img
 
 
 def image_processing():
