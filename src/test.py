@@ -8,11 +8,11 @@ from src.utils.read_test_img import read_test_img
 
 
 def test_model(model_name, use_gpu):
-    if use_gpu:
+    if not use_gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
     test_images, test_labels = read_test_img(r'F:\do_pracy_mrg\data\GTSRB_Final_Test_Images\GTSRB\Final_Test\Images',
-                                             classes_number=10)
+                                             first_classes_number=0, last_classes_number=9)
     model = load_model('F:\\PracaMagisterska\\saved_models\\' + model_name)
 
     test_labels = to_categorical(test_labels)

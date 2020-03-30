@@ -3,13 +3,13 @@ import csv
 import numpy as np
 
 
-def read_train_img(root_path, omission_image_times=0, classes_number=43):
+def read_train_img(root_path, omission_image_times=0, first_classes_number=0, last_classes_number=43):
     train_images = []
     val_images = []
     train_labels = []
     val_labels = []
     # loop over all 42 classes
-    for c in range(0, classes_number):
+    for c in range(first_classes_number, last_classes_number + 1):
         prefix = root_path + '\\' + format(c, '05d') + '\\'  # subdirectory for class
         gt_file = open(prefix + 'GT-' + format(c, '05d') + '.csv')  # annotations file
         gt_file2 = open(prefix + 'GT-' + format(c, '05d') + '.csv')

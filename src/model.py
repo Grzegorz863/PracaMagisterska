@@ -1,17 +1,16 @@
 import os
 from keras import layers, optimizers
 from keras import models
-import matplotlib.pyplot as plt
 
 from src.image_processing import image_processing
+from src.utils.utils import generate_model_plots, generate_save_file_path
 
 
-def fit_model(save_file_name, use_gpu):
-
-    if use_gpu:
+def fit_model(use_gpu, epochs):
+    if not use_gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
-    train_img_gen, val_img_gen = image_processing()
+    train_img_gen, val_img_gen, steps_per_epoch_train, steps_per_epoch_val = image_processing()
 
     model = models.Sequential()
     model.add(layers.Conv2D(32, (3, 3), activation='relu', input_shape=(100, 100, 3)))
@@ -32,34 +31,14 @@ def fit_model(save_file_name, use_gpu):
 
     history = model.fit_generator(
         train_img_gen,
-        steps_per_epoch=165,
-        epochs=20,
+        steps_per_epoch=steps_per_epoch_train,
+        epochs=epochs,
         validation_data=val_img_gen,
-        validation_steps=50)
+        validation_steps=steps_per_epoch_val)
 
-    model.save('.\\saved_models\\' + save_file_name)
+    model.save(generate_save_file_path())
 
     generate_model_plots(history)
 
 
-def generate_model_plots(history):
-    acc = history.history['acc']
-    val_acc = history.history['val_acc']
-    loss = history.history['loss']
-    val_loss = history.history['val_loss']
-
-    epochs = range(len(acc))
-
-    plt.plot(epochs, acc, 'bo', label='Dokladnosc trenowania')
-    plt.plot(epochs, val_acc, 'b', label='Dokladnosc walidacji')
-    plt.title('Dokladnosc trenowania i walidacji')
-    plt.legend()
-
-    plt.figure()
-
-    plt.plot(epochs, loss, 'bo', label='Strata trenowania')
-    plt.plot(epochs, val_loss, 'b', label='Strata walidacji')
-    plt.title('Strata trenowania i walidacji')
-    plt.legend()
-
-    plt.show()
+fit_model(False, 1)

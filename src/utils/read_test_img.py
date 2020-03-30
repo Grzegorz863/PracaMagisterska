@@ -3,7 +3,7 @@ import csv
 import numpy as np
 
 
-def read_test_img(root_path, omission_image_times=0, classes_number=43):
+def read_test_img(root_path, omission_image_times=0, first_classes_number=0, last_classes_number=43):
     test_images = []
     test_labels = []
 
@@ -11,7 +11,7 @@ def read_test_img(root_path, omission_image_times=0, classes_number=43):
     gt_reader = csv.reader(gt_file, delimiter=';')  # csv parser for annotations file
     next(gt_reader)  # skip header
     for row in gt_reader:
-        if int(row[7]) < classes_number:
+        if first_classes_number <= int(row[7]) <= last_classes_number:
             resized_image = cv2.resize(cv2.imread(root_path + '\\' + row[0]), (100, 100))
             test_images.append(resized_image)  # the 1th column is the filename
             test_labels.append(row[7])  # the 8th column is the label

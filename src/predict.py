@@ -6,7 +6,7 @@ from src.utils.utils import read_my_images
 
 
 def predict(model_name, use_gpu):
-    if use_gpu:
+    if not use_gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
     model = load_model(r'../saved_models/' + model_name)
