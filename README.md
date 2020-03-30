@@ -4,7 +4,7 @@
 **Autor:** Grzegorz Nowak <br />
 **Promotor:** dr inż. Robert Tutajewicz <br />
 **Uczelnia:** Politechnika Śląska <br />
-**Wydział:** AEI <br />
+**Wydział:** Automatyki, Elektroniki i Informatyki <br />
 **Kierunek:** Informatyka <br />
 **Stopień studiów:** II <br />
 **Semestr:** 3 <br />
