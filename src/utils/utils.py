@@ -43,8 +43,8 @@ def generate_model_plots(history):
 
 
 def generate_save_file_path(root_path=r'F:\PracaMagisterska\saved_models'):
-    model_str = 'model'
-    extension_str = '.h5'
+    model_str = 'model_'
+    extension_str = '_.h5'
     max = 0
     for file in os.listdir(root_path):
         file = file.lower()
