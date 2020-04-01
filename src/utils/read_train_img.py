@@ -3,7 +3,7 @@ import csv
 import numpy as np
 
 
-def read_train_img(root_path, omission_image_times=0, first_classes_number=0, last_classes_number=43):
+def read_train_img(root_path, omission_image_times=0, first_classes_number=0, last_classes_number=42):
     train_images = []
     val_images = []
     train_labels = []
@@ -24,14 +24,17 @@ def read_train_img(root_path, omission_image_times=0, first_classes_number=0, la
             if sign_index <= train_signs_num:
                 resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
                 train_images.append(resized_image)  # the 1th column is the filename
-                train_labels.append(row[7])  # the 8th column is the label
+                train_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
             else:
                 resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
                 val_images.append(resized_image)  # the 1th column is the filename
-                val_labels.append(row[7])  # the 8th column is the label
+                val_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
 
             for i in range(0, omission_image_times):
-                next(gt_reader)
+                try:
+                    next(gt_reader)
+                except StopIteration:
+                    print("An StopIteration occurred")
         gt_file.close()
         gt_file2.close()
     return np.asarray(train_images, dtype=np.float32), np.asarray(train_labels, dtype=np.float32), \

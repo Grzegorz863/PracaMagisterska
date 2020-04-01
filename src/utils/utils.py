@@ -8,15 +8,17 @@ import numpy as np
 # read images to predict
 def read_my_images(path):
     my_images = []
-    valid_images = [".jpg", ".gif", ".png", ".tga"]
+    file_names = []
+    valid_images = [".jpg", ".png", ".ppm"]
     for f in os.listdir(path):
         ext = os.path.splitext(f)[1]
         if ext.lower() not in valid_images:
             continue
         img = cv2.resize(cv2.imread(join(path, f)), (100, 100))
+        file_names.append(f)
         my_images.append(img)
 
-    return np.asarray(my_images, dtype=np.float32)
+    return np.asarray(my_images, dtype=np.float32), file_names
 
 
 def generate_model_plots(history):

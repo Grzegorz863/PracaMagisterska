@@ -14,7 +14,7 @@ def read_test_img(root_path, omission_image_times=0, first_classes_number=0, las
         if first_classes_number <= int(row[7]) <= last_classes_number:
             resized_image = cv2.resize(cv2.imread(root_path + '\\' + row[0]), (100, 100))
             test_images.append(resized_image)  # the 1th column is the filename
-            test_labels.append(row[7])  # the 8th column is the label
+            test_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
 
         for i in range(0, omission_image_times):
             next(gt_reader)
