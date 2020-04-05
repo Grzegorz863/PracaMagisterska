@@ -13,6 +13,7 @@ def read_test_img(root_path, omission_image_times=0, first_classes_number=0, las
     for row in gt_reader:
         if first_classes_number <= int(row[7]) <= last_classes_number:
             resized_image = cv2.resize(cv2.imread(root_path + '\\' + row[0]), (100, 100))
+            resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
             test_images.append(resized_image)  # the 1th column is the filename
             test_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
 

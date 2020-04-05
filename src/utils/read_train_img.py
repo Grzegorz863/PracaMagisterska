@@ -23,10 +23,12 @@ def read_train_img(root_path, omission_image_times=0, first_classes_number=0, la
             sign_index = int(row[0][0:5])
             if sign_index <= train_signs_num:
                 resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
+                resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
                 train_images.append(resized_image)  # the 1th column is the filename
                 train_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
             else:
                 resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
+                resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
                 val_images.append(resized_image)  # the 1th column is the filename
                 val_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
 
