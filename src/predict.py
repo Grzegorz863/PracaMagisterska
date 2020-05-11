@@ -12,6 +12,7 @@ def predict(model_name, use_gpu):
 
     model = load_model(r'../saved_models/' + model_name)
     my_images_tab, _file_names = read_my_images(r'F:\do_pracy_mrg\data\to_predict')
+    my_images_tab = np.expand_dims(my_images_tab, axis=3)
     my_images_tab /= 255
     predictions = model.predict(my_images_tab, verbose=1)
     _max_values = []
@@ -33,4 +34,4 @@ def show_predict_results(max_values, predicted_classes, file_names):
                    tablefmt='orgtbl'))
 
 
-predict('model_3_.h5', False)
+predict('model_45_.h5', False)

@@ -20,9 +20,10 @@ def read_my_images(path):
         ext = os.path.splitext(f)[1]
         if ext.lower() not in valid_images:
             continue
-        img = cv2.resize(cv2.imread(join(path, f)), (100, 100))
+        resized_image = cv2.resize(cv2.imread(join(path, f)), (100, 100))
+        resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
         file_names.append(f)
-        my_images.append(img)
+        my_images.append(resized_image)
 
     return np.asarray(my_images, dtype=np.float32), file_names
 
@@ -35,6 +36,11 @@ def generate_model_plots(history, model_name):
     val_loss = history.history['val_loss']
 
     epochs = range(len(acc))
+    epochs = epochs[5:]
+    acc = acc[5:]
+    val_acc = val_acc[5:]
+    loss = loss[5:]
+    val_loss = val_loss[5:]
 
     plt.plot(epochs, acc, 'bo', label='Dokladnosc trenowania')
     plt.plot(epochs, val_acc, 'b', label='Dokladnosc walidacji')
@@ -66,7 +72,7 @@ def generate_save_file_path(root_path=r'F:\PracaMagisterska\saved_models'):
                 if x > max:
                     max = x
     return root_path + '\\' + model_str + str(max + 1) + extension_str, model_str + str(max + 1), model_str + str(
-        max + 1) + extension_str
+        max + 1) + extension_str, 'F:\\PracaMagisterska\\saved_models\\info\\' + model_str + str(max + 1)
 
 
 def generate_model_info_before_fit(model_name, model):
@@ -85,7 +91,7 @@ def generate_model_info_before_fit(model_name, model):
 
 def generate_model_info_after_fit(model_name, model_name_ext):
     model_info_path = 'F:\\PracaMagisterska\\saved_models\\info\\' + model_name + '\\'
-    test_loss, test_acc = test_model(model_name_ext, False)
+    test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\' + model_name_ext, False)
     with open(model_info_path + 'summary.txt', 'a') as file:
         file.write('test accuracy: ' + str(test_acc) + '\n')
         file.write('test loss: ' + str(test_loss) + '\n')
