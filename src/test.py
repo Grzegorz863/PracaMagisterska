@@ -5,7 +5,7 @@ from keras.utils import to_categorical
 from keras_preprocessing.image import ImageDataGenerator, np
 
 from src.utils.read_test_img import read_test_img
-
+from keras import backend as K
 
 def test_model(path_to_model, use_gpu):
     if not use_gpu:
@@ -22,32 +22,9 @@ def test_model(path_to_model, use_gpu):
     return model.evaluate_generator(test_img_gen)
 
 
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_55\\max_val_acc.h5', True)
+
+test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_82\\max_val_acc.h5', True)
 print('dokładnosc podczas testowania max_val_acc:', test_acc)
 
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_55\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_56\\max_val_acc.h5', True)
-print('dokładnosc podczas testowania max_val_acc:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_56\\min_val_loss.h5', True)
-print('dokładnosc podczas testowania min_val_loss:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_57\\max_val_acc.h5', True)
-print('dokładnosc podczas testowania max_val_acc:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_57\\min_val_loss.h5', True)
-print('dokładnosc podczas testowania min_val_loss:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_58\\max_val_acc.h5', True)
-print('dokładnosc podczas testowania max_val_acc:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_58\\min_val_loss.h5', True)
-print('dokładnosc podczas testowania min_val_loss:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_59\\max_val_acc.h5', True)
-print('dokładnosc podczas testowania max_val_acc:', test_acc)
-
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_59\\min_val_loss.h5', True)
+test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_82\\min_val_loss.h5', True)
 print('dokładnosc podczas testowania min_val_loss:', test_acc)

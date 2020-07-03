@@ -8,6 +8,7 @@ def read_train_img(root_path, omission_image_times=0, first_classes_number=0, la
     val_images = []
     train_labels = []
     val_labels = []
+    i = 0
     # loop over all 42 classes
     for c in range(first_classes_number, last_classes_number + 1):
         prefix = root_path + '\\' + format(c, '05d') + '\\'  # subdirectory for class
@@ -22,13 +23,23 @@ def read_train_img(root_path, omission_image_times=0, first_classes_number=0, la
         for row in gt_reader:
             sign_index = int(row[0][0:5])
             if sign_index <= train_signs_num:
-                resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
+                img = cv2.imread(prefix + row[0])
+                # width, height, _ = img.shape
+                # img = img[4:width-4, 4:height-4]
+                resized_image = cv2.resize(img, (100, 100))
                 resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
+                # clahe = cv2.createCLAHE()
+                # resized_image = clahe.apply(resized_image)
                 train_images.append(resized_image)  # the 1th column is the filename
                 train_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
             else:
-                resized_image = cv2.resize(cv2.imread(prefix + row[0]), (100, 100))
+                img = cv2.imread(prefix + row[0])
+                # width, height, _ = img.shape
+                # img = img[4:width-4, 4:height-4]
+                resized_image = cv2.resize(img, (100, 100))
                 resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
+                # clahe = cv2.createCLAHE()
+                # resized_image = clahe.apply(resized_image)
                 val_images.append(resized_image)  # the 1th column is the filename
                 val_labels.append(str(int(row[7])-first_classes_number))  # the 8th column is the label
 
@@ -39,5 +50,8 @@ def read_train_img(root_path, omission_image_times=0, first_classes_number=0, la
                     print("An StopIteration occurred")
         gt_file.close()
         gt_file2.close()
+        i = i + 1
+        # train_images = train_images + val_images
+        # train_labels = train_labels + val_labels
     return np.asarray(train_images, dtype=np.float32), np.asarray(train_labels, dtype=np.float32), \
            np.asarray(val_images, dtype=np.float32), np.asarray(val_labels, dtype=np.float32),

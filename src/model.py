@@ -13,17 +13,17 @@ def fit_model(use_gpu, epochs):
     if not use_gpu:
         os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
 
-    train_img_gen, val_img_gen, steps_per_epoch_train, steps_per_epoch_val = image_processing(train_data_augmentation=4)
+    train_img_gen, val_img_gen, steps_per_epoch_train, steps_per_epoch_val = image_processing(batch_size=64, train_data_augmentation=6)
     path_to_model, model_name, model_name_with_ext, path_to_model_info = generate_save_file_path()
 
     model = models.Sequential()
-    model.add(layers.Conv2D(64, (3, 3), activation='relu', input_shape=(100, 100, 1)))
+    model.add(layers.Conv2D(64, (5, 5), activation='relu', input_shape=(100, 100, 1)))
     model.add(layers.Conv2D(64, (3, 3), activation='relu', ))
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(BatchNormalization())
     model.add(layers.Dropout(0.1))
 
-    model.add(layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(layers.Conv2D(64, (5, 5), activation='relu'))
     model.add(layers.Conv2D(64, (3, 3), activation='relu', ))
     model.add(layers.MaxPooling2D((2, 2)))
     model.add(BatchNormalization())
@@ -69,4 +69,4 @@ def fit_model(use_gpu, epochs):
     generate_model_plots(history, model_name)
 
 
-fit_model(True, 35)
+fit_model(True, 100)
