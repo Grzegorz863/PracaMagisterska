@@ -6,7 +6,6 @@ from keras.utils import to_categorical
 from keras_preprocessing.image import ImageDataGenerator, np
 
 from src.utils.read_test_img import read_test_img
-from keras import backend as K
 
 def test_model(path_to_model, use_gpu):
     if not use_gpu:
@@ -25,35 +24,9 @@ def test_model(path_to_model, use_gpu):
     print(end-start)
     return test_loss, test_acc
 
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_7\\max_val_acc.h5', True)
-# print('dokładnosc podczas testowania max_val_acc:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_7\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss:', test_acc)
 
-test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\model_21_.h5', True)
+test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_88\\max_val_acc.h5', True)
+print('dokładnosc podczas testowania max_val_acc:', test_acc)
+
+test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_88\\min_val_loss.h5', True)
 print('dokładnosc podczas testowania min_val_loss:', test_acc)
-
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_89\\max_val_acc.h5', True)
-# print('dokładnosc podczas testowania max_val_acc adam:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_89\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss adam:', test_acc)
-
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_70\\max_val_acc.h5', True)
-# print('dokładnosc podczas testowania max_val_acc SGD:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_70\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss SGD:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_85\\max_val_acc.h5', True)
-# print('dokładnosc podczas testowania max_val_acc:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_85\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_88\\max_val_acc.h5', True)
-# print('dokładnosc podczas testowania max_val_acc:', test_acc)
-#
-# test_loss, test_acc = test_model('F:\\PracaMagisterska\\saved_models\\info\\model_88\\min_val_loss.h5', True)
-# print('dokładnosc podczas testowania min_val_loss:', test_acc)

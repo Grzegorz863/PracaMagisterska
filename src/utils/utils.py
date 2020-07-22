@@ -7,7 +7,6 @@ from os.path import join
 import matplotlib.pyplot as plt
 import numpy as np
 
-# read images to predict
 from keras.engine.saving import load_model
 
 from src.test import test_model
