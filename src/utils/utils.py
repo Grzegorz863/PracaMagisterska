@@ -1,4 +1,5 @@
 import os
+import pickle
 import shutil
 
 import cv2
@@ -29,6 +30,9 @@ def read_my_images(path):
 
 
 def generate_model_plots(history, model_name):
+    with open('F:\\PracaMagisterska\\saved_models\\history\\' + model_name + '.history', 'wb') as file_pi:
+        pickle.dump(history.history, file_pi)
+
     model_info_path = 'F:\\PracaMagisterska\\saved_models\\info\\' + model_name + '\\'
     acc = history.history['acc']
     val_acc = history.history['val_acc']
