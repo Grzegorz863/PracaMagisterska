@@ -1,0 +1,6 @@
+#!/bin/bash
+#SBATCH -p k40
+#SBATCH -w wn111
+#SBATCH --output="/home/gnowak/detection/out/model_35.out" 
+export PYTHONPATH=$PYTHONPATH:/home/gnowak/do_pracy_mrg/models-master/research:/home/gnowak/do_pracy_mrg/models-master/research/slim
+srun python /home/gnowak/detection/my/train.py --alsologtostderr --train_dir=/home/gnowak/do_pracy_mrg/wytrenowane/model_35 --pipeline_config_path=/home/gnowak/do_pracy_mrg/configs/model_35.config

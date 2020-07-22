@@ -1,0 +1,6 @@
+conda activate PracaMagisterska_detection
+cd F:\do_pracy_mrg\models_clean\models\research
+F:
+python object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=F:/do_pracy_mrg/wytrenowane_frcnn/zmiemowit_ckpt/model_0/pipeline.config --trained_checkpoint_prefix=F:/do_pracy_mrg/wytrenowane_frcnn/zmiemowit_ckpt/model_0/model.ckpt-3000 --output_directory=F:/do_pracy_mrg/wytrenowane_frcnn/zmiemowit_iterface_graph/model_0
+	
+pause

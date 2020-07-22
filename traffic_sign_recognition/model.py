@@ -4,8 +4,8 @@ from keras import models
 from keras.callbacks import ModelCheckpoint
 from keras.layers import BatchNormalization
 
-from src.image_processing import image_processing
-from src.utils.utils import generate_model_plots, generate_save_file_path, generate_model_info_before_fit, \
+from traffic_sign_recognition.image_processing import image_processing
+from traffic_sign_recognition.utils.utils import generate_model_plots, generate_save_file_path, generate_model_info_before_fit, \
     generate_model_info_after_fit
 
 

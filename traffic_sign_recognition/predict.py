@@ -3,7 +3,7 @@ from keras.engine.saving import load_model
 from keras_preprocessing.image import ImageDataGenerator, np
 from tabulate import tabulate
 
-from src.utils.utils import read_my_images
+from traffic_sign_recognition.utils.utils import read_my_images
 
 
 def predict(model_name, use_gpu):

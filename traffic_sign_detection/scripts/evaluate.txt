@@ -1,0 +1,4 @@
+conda activate PracaMagisterska_detection
+F:
+cd F:\PracaMagisterska_detection
+python ./my/eval.py --alsologtostderr --checkpoint_dir=F:/do_pracy_mrg/wytrenowane_frcnn/zmiemowit_iterface_graph/model_2 --eval_dir=F:/do_pracy_mrg/wyniki/eval --pipeline_config_path=F:/do_pracy_mrg/wytrenowane_frcnn/zmiemowit_iterface_graph/model_2/pipeline.config

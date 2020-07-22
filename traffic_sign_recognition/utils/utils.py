@@ -9,7 +9,7 @@ import numpy as np
 
 from keras.engine.saving import load_model
 
-from src.test import test_model
+from traffic_sign_recognition.test import test_model
 
 
 def read_my_images(path):
@@ -80,7 +80,7 @@ def generate_save_file_path(root_path=r'F:\PracaMagisterska\saved_models'):
 
 def generate_model_info_before_fit(model_name, model):
     model_info_path = 'F:\\PracaMagisterska\\saved_models\\info\\' + model_name + '\\'
-    src_path = 'F:\\PracaMagisterska\\src\\'
+    src_path = '/traffic_sign_recognition\\'
     if not os.path.exists(model_info_path):
         os.mkdir(path=model_info_path)
 

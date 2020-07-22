@@ -1,0 +1,3 @@
+F:
+conda activate PracaMagisterska_detection
+tensorboard --logdir D:\mrg\logs\model_35\eval

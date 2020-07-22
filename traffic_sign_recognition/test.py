@@ -5,7 +5,7 @@ from keras.models import load_model
 from keras.utils import to_categorical
 from keras_preprocessing.image import ImageDataGenerator, np
 
-from src.utils.read_test_img import read_test_img
+from traffic_sign_recognition.utils.read_test_img import read_test_img
 
 def test_model(path_to_model, use_gpu):
     if not use_gpu:

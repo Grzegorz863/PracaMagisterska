@@ -3,7 +3,7 @@ from keras.utils import to_categorical
 from keras.preprocessing.image import ImageDataGenerator
 import math
 
-from src.utils.read_train_img import read_train_img
+from traffic_sign_recognition.utils.read_train_img import read_train_img
 
 
 def image_processing(batch_size=32, train_data_augmentation=1):
