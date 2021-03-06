@@ -1,15 +1,12 @@
-# Praca Magisterska
-**Temat:** Rozpoznawanie znaków drogowych z wykorzystaniem technik głębokiego uczenia maszynowego <br />
-**Temat w języku alternatywnym:** Traffic sign recognition using deep machine learning techniques <br />
-**Autor:** Grzegorz Nowak <br />
-**Promotor:** dr inż. Robert Tutajewicz <br />
-**Uczelnia:** Politechnika Śląska <br />
-**Wydział:** Automatyki, Elektroniki i Informatyki <br />
-**Kierunek:** Informatyka <br />
-**Stopień studiów:** II <br />
-**Semestr:** 3 <br />
+# Master's thesis: Traffic Sign Detection And Recognition
+**Title:** Traffic sign recognition using deep machine learning techniques <br />
+**Autor:** Grzegorz Nowak, BEng, MSc <br />
+**Thesis supervisor:** Robert Tutajewicz, BEng, PhD <br />
+**University:** Silesian University of Technology <br />
+**Department:** Faculty of Automatic Control, Electronics and Computer Science <br />
+**Field of study:** Computer science <br />
 
-###### Opis pracy magisterskiej:
-Celem pracy jest znalezienie najdokładniejszej techniki wykrywania, a w następstwie rozpoznawania znaków drogowych. W projekcie zastosowane zostanie głębokie uczenie maszynowe w postaci konwolucyjnych sieci neuronowych. Do stworzenia projektu zostanie wykorzystana biblioteka Keras i środowisko języka Python.
+###### Master's thesis description:
+The aim of the study is to find the most accurate detection technique and, consequently, the recognition of road signs. The project will use deep machine learning in the form of convolutional neural networks. The Keras library, TensorFlow, Tensorflow Object Detection API and the Python language environment will be used to create the project.
 
-Uwagi proszę przesyłać na e-mail: *grzenow582@student.polsl.pl*
+Please send your comments to the e-mail address: *grzenow582@student.polsl.pl*
